@@ -1,42 +1,68 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* client/src/App.css */
+.app-layout {
+  display: flex;
+  height: 100vh; /* ビューポートの高さに合わせて全画面表示 */
+  overflow: hidden; /* 子要素がはみ出さないように */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.sidebar {
+  width: 250px; /* サイドバーの幅 */
+  background-color: #1a1e23; /* サイドバーの背景色を少し暗く */
+  padding: 20px;
+  flex-shrink: 0; /* サイドバーが縮まないように */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; /* サイドバーが長くなった場合にスクロールできるように */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sidebar ul {
+  list-style: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.sidebar li {
+  margin-bottom: 10px;
 }
 
-.card {
-  padding: 2em;
+.sidebar a {
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 10px 15px;
+  display: block;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.sidebar a:hover {
+  background-color: #3a3e44; /* ホバー時の色 */
+}
+
+.sidebar a.active { /* 現在アクティブなリンク用 */
+  background-color: var(--accent-color-normal);
+  color: #fff;
+}
+
+.content {
+  flex-grow: 1; /* 残りのスペースを全て占める */
+  padding: 20px;
+  overflow-y: auto; /* コンテンツが長くなった場合にスクロールできるように */
+}
+
+.sidebar a {
+  /* 既存のスタイル */
+  display: flex; /* アイコンとテキストを横並びにする */
+  align-items: center; /* 垂直方向中央揃え */
+  gap: 10px; /* アイコンとテキストの間隔 */
+}
+
+.sidebar a.active {
+  background-color: var(--accent-color-normal);
+  color: var(--text-color); /* アクティブ時のテキストカラーも指定 */
+}
+
+.sidebar-icon {
+  font-size: 24px; /* アイコンのサイズ */
+  color: var(--text-color); /* デフォルトのアイコン色 */
+}
+
+.sidebar a.active .sidebar-icon {
+  color: var(--text-color); /* アクティブ時のアイコン色 */
 }

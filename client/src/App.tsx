@@ -1,8 +1,10 @@
 // client/src/App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'; // 後で作成
 import './index.css'; // グローバルスタイルを読み込む
+import SidebarItem from './components/SidebarItem'; // SidebarItem をインポート
+import { MdStorefront, MdLibraryBooks, MdOutlineCloudDownload, MdSettings, MdLogin } from 'react-icons/md'; // 例として Material Design Icons をインポート
 
 // ダミーコンポーネント (後で実際のコンポーネントに置き換えます)
 const StorePage: React.FC = () => (
@@ -42,11 +44,11 @@ const App: React.FC = () => {
       <div className="app-layout">
         <nav className="sidebar">
           <ul>
-            <li><Link to="/">ストア</Link></li>
-            <li><Link to="/library">ライブラリ</Link></li>
-            <li><Link to="/downloads">ダウンロード</Link></li>
-            <li><Link to="/settings">設定</Link></li>
-            <li><Link to="/login">ログイン</Link></li> {/* ログインページへのリンク */}
+            <SidebarItem to="/" icon={MdStorefront} label="ストア" end />
+            <SidebarItem to="/library" icon={MdLibraryBooks} label="ライブラリ" />
+            <SidebarItem to="/downloads" icon={MdOutlineCloudDownload} label="ダウンロード" />
+            <SidebarItem to="/settings" icon={MdSettings} label="設定" />
+            <SidebarItem to="/login" icon={MdLogin} label="ログイン" />
           </ul>
         </nav>
         <main className="content">
@@ -55,7 +57,7 @@ const App: React.FC = () => {
             <Route path="/library" element={<LibraryPage />} />
             <Route path="/downloads" element={<DownloadsPage />} />
             <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/login" element={<LoginPage />} /> {/* ログインページのルート */}
+            <Route path="/login" element={<LoginPage />} />
           </Routes>
         </main>
       </div>
