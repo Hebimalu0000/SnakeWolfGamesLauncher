@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// client/src/App.tsx
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import './App.css'; // 後で作成
+import './index.css'; // グローバルスタイルを読み込む
 
-function App() {
-  const [count, setCount] = useState(0)
+// ダミーコンポーネント (後で実際のコンポーネントに置き換えます)
+const StorePage: React.FC = () => (
+  <div style={{ padding: '20px' }}>
+    <h2>ストア</h2>
+    <p>ゲームの購入や情報を閲覧するページです。</p>
+  </div>
+);
+const LibraryPage: React.FC = () => (
+  <div style={{ padding: '20px' }}>
+    <h2>ライブラリ</h2>
+    <p>所有しているゲームを管理するページです。</p>
+  </div>
+);
+const DownloadsPage: React.FC = () => (
+  <div style={{ padding: '20px' }}>
+    <h2>ダウンロード</h2>
+    <p>ゲームのダウンロード状況を確認するページです。</p>
+  </div>
+);
+const SettingsPage: React.FC = () => (
+  <div style={{ padding: '20px' }}>
+    <h2>設定</h2>
+    <p>ランチャーの設定を行うページです。</p>
+  </div>
+);
+const LoginPage: React.FC = () => (
+  <div style={{ padding: '20px' }}>
+    <h2>ログイン</h2>
+    <p>アカウントにログインまたは新規登録するページです。</p>
+  </div>
+);
 
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app-layout">
+        <nav className="sidebar">
+          <ul>
+            <li><Link to="/">ストア</Link></li>
+            <li><Link to="/library">ライブラリ</Link></li>
+            <li><Link to="/downloads">ダウンロード</Link></li>
+            <li><Link to="/settings">設定</Link></li>
+            <li><Link to="/login">ログイン</Link></li> {/* ログインページへのリンク */}
+          </ul>
+        </nav>
+        <main className="content">
+          <Routes>
+            <Route path="/" element={<StorePage />} />
+            <Route path="/library" element={<LibraryPage />} />
+            <Route path="/downloads" element={<DownloadsPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/login" element={<LoginPage />} /> {/* ログインページのルート */}
+          </Routes>
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </Router>
+  );
+};
 
-export default App
+export default App;
