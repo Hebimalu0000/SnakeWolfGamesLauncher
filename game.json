@@ -1,0 +1,14 @@
+[
+  {
+    "id": "game001",
+    "title": "Super Wolf Adventure",
+    "genre": "アクション",
+    "price": 1980,
+    "thumbnail": "https://raw.githubusercontent.com/youruser/yourrepo/main/images/game001.png",
+    "description": "冒険と謎解きのアクションゲーム。勇敢な狼が主人公。",
+    "screenshots": [
+      "https://raw.githubusercontent.com/youruser/yourrepo/main/images/game001-1.png",
+      "https://raw.githubusercontent.com/youruser/yourrepo/main/images/game001-2.png"
+    ]
+  }
+]
